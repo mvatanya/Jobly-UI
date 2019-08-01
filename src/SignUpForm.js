@@ -12,7 +12,7 @@ class SignUpForm extends Component {
     }
 
     this.handleChange = this.handleChange.bind(this)
-    this.inputSearch = this.inputSearch.bind(this)
+    this.inputSignup = this.inputSignup.bind(this)
   }
   handleChange = evt => {
     this.setState({
@@ -20,16 +20,16 @@ class SignUpForm extends Component {
     });
   };
   // TODO: NEED TO CHANG!!!!!
-  inputSearch = evt => {
+  inputSignup = evt => {
     evt.preventDefault();
-    this.props.searchInput(this.state.input)
+    this.props.userSignUp(this.state.username, this.state.password, this.state.firstName, this.state.lastName, this.state.email)
   }
 
   render() {
 
     return (
       <div>
-        <form onSubmit={this.inputSearch}>
+        <form onSubmit={this.inputSignup}>
           <label htmlFor="id">Username</label>
           <input
             id="username"

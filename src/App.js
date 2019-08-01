@@ -5,6 +5,14 @@ import Routes from "./Routes";
 import NavBar from "./NavBar";
 
 class App extends Component {
+  constructor(props) {
+    super(props)
+    this.state = { token: ""}
+
+  }
+  async componentDidMount() {
+    
+  }
 
   
 

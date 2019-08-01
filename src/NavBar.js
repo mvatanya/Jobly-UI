@@ -11,7 +11,6 @@ class NavBar extends Component {
           <NavLink to="/companies" className="mr-2">Companies</NavLink>
           <NavLink to="/jobs" className="mr-2">Jobs</NavLink>
           <NavLink to="/login" className="mr-2">Login</NavLink>
-          <NavLink to="/signup" className="mr-2">Signup</NavLink>
 
         </Nav>
   </Navbar>

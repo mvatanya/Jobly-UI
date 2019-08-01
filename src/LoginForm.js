@@ -17,7 +17,7 @@ class Login extends Component {
   // TODO: NEED TO CHANG!!!!!
   inputLogin = evt => {
     evt.preventDefault();
-    this.props.searchInput(this.state.username, this.state.password)
+    this.props.userInput(this.state.username, this.state.password)
   }
 
   render() {
