@@ -23,7 +23,7 @@ import React, { Component } from "react"
       
       return(
         <div>
-          <form onSubmit={this.inputSearch}>
+          <form onSubmit={this.inputSearch} >
           <input
             name="input"
             type="text"

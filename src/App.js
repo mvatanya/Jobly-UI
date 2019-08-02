@@ -27,17 +27,7 @@ class App extends Component {
   }
 
   async checkToken(){
-    debugger
     
-    // let username = jwt.decode(localStorage.getItem("token"));
-    // console.log("username",username)
-    // if (username){
-    //   let user = await JoblyApi.authenticate(username.username)
-    //   console.log("I am user", user)
-    //   if(user){
-    //     this.setState({user: user})
-    //   }
-    // }
     try{
       console.log("username",jwt.decode(localStorage.getItem("token")))
       let username = jwt.decode(localStorage.getItem("token")).username;

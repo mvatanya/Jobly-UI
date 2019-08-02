@@ -36,7 +36,7 @@ class LoginSignUpForm extends Component {
     return(
     <div>
     <button name="login"onClick={this.loginOrSignup}>LogIn</button> <button  name="signup" onClick={this.loginOrSignup}>SignUp</button>
-    {this.state.isLogin ? <LoginForm checkToken={this.props.checkToken} userInput={this.userInput}/> : <SignUpForm checkToken={this.props.checkToken} userSignUp={this.userSignUp}/>}
+    {this.state.isLogin ? <LoginForm history={this.props.history} checkToken={this.props.checkToken} userInput={this.userInput}/> : <SignUpForm history={this.props.history} checkToken={this.props.checkToken} userSignUp={this.userSignUp}/>}
     </div>
     ) 
   }

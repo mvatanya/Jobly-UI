@@ -17,6 +17,8 @@ class Login extends Component {
     evt.preventDefault();
     await this.props.userInput(this.state.username, this.state.password)
     this.props.checkToken()
+    this.props.history.push("/jobs")
+
   }
   
 
@@ -24,7 +26,7 @@ class Login extends Component {
 
     return (
       <div>
-        <form onSubmit={this.inputLogin}  >
+        <form onSubmit={this.inputLogin} >
           <label htmlFor="id">Username</label>
           <input
             id="username"

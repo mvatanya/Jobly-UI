@@ -3,6 +3,7 @@ import { Switch, Route, Redirect, NavLink } from 'react-router-dom';
 import Homepage from './Homepage'
 import Company from './Company'
 import Job from './Job'
+import Logout from "./Logout"
 import LoginSignUpForm from "./LoginSignupForm"
 
 
@@ -19,9 +20,10 @@ class Routes extends Component {
       <Route exact path="/" render={() => <Homepage user={this.props.user}/>} />
       <Route exact path="/companies" render={() => <Company user={this.props.user}/>} />
       <Route exact path="/companies/:handle" render={rtProps => <CompanyDetails {...rtProps} user={this.props.user}/>} />
-      {/* <NavLink to="/jobs" className="mr-2">Jobs</NavLink> */}
       <Route exact path="/jobs" render={() => <Job user={this.props.user}/>} />
-      <Route exact path="/login" render={() => <LoginSignUpForm user={this.props.user} checkToken={this.props.checkToken}/>} />
+      <Route exact path="/login" render={rtProps => <LoginSignUpForm {...rtProps} user={this.props.user} checkToken={this.props.checkToken}/>} />
+      <Route exact path="/logout" render={()=> <Logout /> } />
+
       <Redirect to="/login" />
 
     </Switch>

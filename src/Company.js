@@ -44,8 +44,6 @@ class Company extends Component {
         {companies.map(company =>
           <CompanyCard key={company.handle} {...company} />
         )}
-
-        <Button variant="primary">Primary</Button>
         </div>}
       </div>
 

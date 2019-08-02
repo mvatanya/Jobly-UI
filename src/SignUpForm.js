@@ -22,6 +22,7 @@ class SignUpForm extends Component {
     evt.preventDefault();
     await this.props.userSignUp(this.state.username, this.state.password, this.state.firstName, this.state.lastName, this.state.email)
     this.props.checkToken()
+    this.props.history.push("/jobs")
   }
 
   render() {
