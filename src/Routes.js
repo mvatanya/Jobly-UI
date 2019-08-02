@@ -16,13 +16,13 @@ class Routes extends Component {
 
     return (
     <Switch>
-      <Route exact path="/" render={() => <Homepage />} />
-      <Route exact path="/companies" render={() => <Company />} />
-      <Route exact path="/companies/:handle" render={rtProps => <CompanyDetails {...rtProps} />} />
+      <Route exact path="/" render={() => <Homepage user={this.props.user}/>} />
+      <Route exact path="/companies" render={() => <Company user={this.props.user}/>} />
+      <Route exact path="/companies/:handle" render={rtProps => <CompanyDetails {...rtProps} user={this.props.user}/>} />
       {/* <NavLink to="/jobs" className="mr-2">Jobs</NavLink> */}
-      <Route exact path="/jobs" render={() => <Job />} />
-      <Route exact path="/login" render={() => <LoginSignUpForm/>} />
-      
+      <Route exact path="/jobs" render={() => <Job user={this.props.user}/>} />
+      <Route exact path="/login" render={() => <LoginSignUpForm user={this.props.user} checkToken={this.props.checkToken}/>} />
+      <Redirect to="/login" />
 
     </Switch>
     )

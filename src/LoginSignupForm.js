@@ -3,6 +3,7 @@ import LoginForm from "./LoginForm"
 import SignUpForm from "./SignUpForm"
 import JoblyApi from "./JoblyApi"
 
+
 class LoginSignUpForm extends Component {
   constructor(props) {
     super(props);
@@ -17,14 +18,16 @@ class LoginSignUpForm extends Component {
       }else{
         this.setState({isLogin : false})
       }
+
+
+  }
+  
+  async userInput(username, password){
+    await JoblyApi.login(username, password)
   }
 
-  userInput(username, password){
-    JoblyApi.login(username, password)
-  }
-
-  userSignUp(username, password, firstName, lastName, email){
-    JoblyApi.signUp(username, password, firstName, lastName, email);
+  async userSignUp(username, password, firstName, lastName, email){
+    await JoblyApi.signUp(username, password, firstName, lastName, email);
   }
   
   
@@ -33,7 +36,7 @@ class LoginSignUpForm extends Component {
     return(
     <div>
     <button name="login"onClick={this.loginOrSignup}>LogIn</button> <button  name="signup" onClick={this.loginOrSignup}>SignUp</button>
-    {this.state.isLogin ? <LoginForm userInput={this.userInput}/> : <SignUpForm userSignUp={this.userSignUp}/>}
+    {this.state.isLogin ? <LoginForm checkToken={this.props.checkToken} userInput={this.userInput}/> : <SignUpForm checkToken={this.props.checkToken} userSignUp={this.userSignUp}/>}
     </div>
     ) 
   }

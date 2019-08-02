@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import JoblyApi from './JoblyApi'
 import JobCard from './JobCard'
 import SearchBoxForm from './SearchBoxFom'
+import { Redirect } from 'react-router-dom'
 
 class Job extends Component {
   constructor(props) {
@@ -27,6 +28,10 @@ class Job extends Component {
   render() {
     
     let jobs = this.state.jobs
+    if (Object.keys(this.props.user).length === 0) {
+      
+      return <Redirect to="/login" />
+    } 
     return (
       <div>
         {this.state.loading ? <div>Loading</div> :

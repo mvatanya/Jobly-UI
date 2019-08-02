@@ -5,26 +5,26 @@ class Login extends Component {
     super(props);
     this.state = { username: "", password: "" }
 
-    this.handleChange = this.handleChange.bind(this)
-    this.inputLogin = this.inputLogin.bind(this)
   }
+
   handleChange = evt => {
     this.setState({
       [evt.target.name]: evt.target.value
     });
   };
 
-  // TODO: NEED TO CHANG!!!!!
-  inputLogin = evt => {
+  inputLogin = async evt => {
     evt.preventDefault();
-    this.props.userInput(this.state.username, this.state.password)
+    await this.props.userInput(this.state.username, this.state.password)
+    this.props.checkToken()
   }
+  
 
   render() {
 
     return (
       <div>
-        <form onSubmit={this.inputLogin}>
+        <form onSubmit={this.inputLogin}  >
           <label htmlFor="id">Username</label>
           <input
             id="username"

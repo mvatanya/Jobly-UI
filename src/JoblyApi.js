@@ -1,4 +1,5 @@
 import axios from 'axios'
+import jwt from 'jsonwebtoken';
 
 class JoblyApi {
 
@@ -37,7 +38,6 @@ class JoblyApi {
   static async getCompany(handle) {
     console.log("I am here at api helper", handle)
     let res = await this.request(`companies/${handle}`);
-    console.log("RES", res)
     return res.company;
   }
 
@@ -46,8 +46,8 @@ class JoblyApi {
     return res.jobs;
   }
 
-  //TODO: Might have to change this/ check
   static async login(username, password) {
+    debugger
     let res = await this.request(`login/`, { username: username, password: password }, "post")
     let token = res.token;
     localStorage.setItem("token", token)
@@ -62,6 +62,12 @@ class JoblyApi {
     localStorage.setItem("token", token)
     return token
 
+  }
+
+  static async authenticate(username){
+    let res = await this.request(`users/${username}`, {username: username}, 'get')
+    console.log("RES", res)
+    return res.user
   }
 
 

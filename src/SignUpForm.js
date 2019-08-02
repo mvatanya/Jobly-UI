@@ -11,18 +11,17 @@ class SignUpForm extends Component {
       email: ""
     }
 
-    this.handleChange = this.handleChange.bind(this)
-    this.inputSignup = this.inputSignup.bind(this)
   }
   handleChange = evt => {
     this.setState({
       [evt.target.name]: evt.target.value
     });
   };
-  // TODO: NEED TO CHANG!!!!!
-  inputSignup = evt => {
+
+  inputSignup = async evt => {
     evt.preventDefault();
-    this.props.userSignUp(this.state.username, this.state.password, this.state.firstName, this.state.lastName, this.state.email)
+    await this.props.userSignUp(this.state.username, this.state.password, this.state.firstName, this.state.lastName, this.state.email)
+    this.props.checkToken()
   }
 
   render() {

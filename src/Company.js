@@ -3,6 +3,8 @@ import { Button } from 'react-bootstrap';
 import JoblyApi from './JoblyApi'
 import CompanyCard from './CompanyCard'
 import SearchBoxForm from './SearchBoxFom'
+import { Redirect } from 'react-router-dom'
+
 
 
 class Company extends Component {
@@ -27,11 +29,14 @@ class Company extends Component {
   
 
   render() {
-    
     let companies = this.state.companies
-
+    console.log("I am here at company", this.props.user)
+    
+    if (Object.keys(this.props.user).length === 0) {
+      console.log(Object.keys(this.props.user).length)
+      return <Redirect to="/login" />
+    } 
     return (
-
       <div >
         {this.state.loading ? <div>Loading...</div> :
         <div>
@@ -47,6 +52,7 @@ class Company extends Component {
 
 
     )
+  
   }
 }
 
