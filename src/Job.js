@@ -15,6 +15,7 @@ class Job extends Component {
 
     let jobsResponse = await JoblyApi.getJobs()
     this.setState({ jobs: jobsResponse, loading: false })
+   
   }
 
   async searchInputForm(input) {
@@ -28,17 +29,18 @@ class Job extends Component {
   render() {
     
     let jobs = this.state.jobs
+ 
     if (Object.keys(this.props.user).length === 0) {
-      
       return <Redirect to="/login" />
     } 
+
     return (
       <div>
         {this.state.loading ? <div>Loading</div> :
           <div>
             <SearchBoxForm searchInput={this.searchInputForm} />
             {jobs.map(job =>
-              <JobCard key={job.id} {...job} />
+              <JobCard key={job.id} {...job} username={this.props.user.username} />
             )}
           </div>}
       </div>

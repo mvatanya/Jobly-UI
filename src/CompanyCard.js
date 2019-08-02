@@ -15,11 +15,6 @@ class CompanyCard extends Component {
         </Card>
     </Link>
 
-    //   <ul>
-    //   <li>{this.props.name}</li>
-    //   <li>{this.props.description}</li> 
-    //   <li>{this.props.logo_url}</li> 
-    // </ul>
     )
   }
 }

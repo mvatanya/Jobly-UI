@@ -4,10 +4,8 @@ import jwt from 'jsonwebtoken';
 class JoblyApi {
 
   static async request(endpoint, paramsOrData = {}, verb = "get") {
-    paramsOrData._token = ( // TODO: for now, hardcode token for "testing". Change this once have authenticate route
-      "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InRlc3R1c2VyMiIsImlhdCI6MTU2NDU5MjAyMX0.Q8L-laSfna2ynebbOXfz_Bcp-dLQSld-c9IpMY5oAQw");
-
-    console.debug("API Call:", endpoint, paramsOrData, verb);
+    let token = localStorage.getItem("token")
+    paramsOrData._token =  token
 
     try {
       return (await axios({
@@ -21,7 +19,6 @@ class JoblyApi {
     }
 
     catch (err) {
-      console.error("API Error:", err.response);
       let message = err.response.data.message;
       throw Array.isArray(message) ? message : [message];
     }
@@ -36,7 +33,6 @@ class JoblyApi {
 
 
   static async getCompany(handle) {
-    console.log("I am here at api helper", handle)
     let res = await this.request(`companies/${handle}`);
     return res.company;
   }
@@ -45,6 +41,13 @@ class JoblyApi {
     let res = await this.request(`jobs/`, { search: data });
     return res.jobs;
   }
+
+  // static async getUserJobs(username) {
+  //   let res = await this.request(`users/${username}`, { username: username });
+  //   console.log(username)
+  //   console.log("RES",res)
+  //   return res.jobs;
+  // }
 
   static async login(username, password) {
     debugger
@@ -66,10 +69,14 @@ class JoblyApi {
 
   static async authenticate(username){
     let res = await this.request(`users/${username}`, {username: username}, 'get')
-    console.log("RES", res)
     return res.user
   }
 
+  static async appliedJob(id, username){
+    let res = await this.request(`jobs/${id}/apply`, {username: username}, 'post')
+
+    return res.message
+  }
 
 }
 

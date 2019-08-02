@@ -16,15 +16,6 @@ class NavBar extends Component {
         </Nav>
   </Navbar>
 
-      // <ul>
-      //   <li><Link to="/">Jobly</Link></li>
-      //   <li><Link to="/companies">Companies</Link></li>
-      //   <li><Link to="/jobs">Jobs</Link></li>
-      //   <li><Link to="/profile">Profile</Link></li>
-      //   <li><Link to="/login">Log in </Link></li>
-      //   <li><Link to="/logout">Log out </Link></li>
-        
-      // </ul>
     );
   }
 } // end

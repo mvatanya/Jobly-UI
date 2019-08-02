@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { Button } from 'react-bootstrap';
 import JoblyApi from './JoblyApi'
 import CompanyCard from './CompanyCard'
 import SearchBoxForm from './SearchBoxFom'
@@ -30,10 +29,8 @@ class Company extends Component {
 
   render() {
     let companies = this.state.companies
-    console.log("I am here at company", this.props.user)
-    
+    console.log('Object.keys(this.props.user....', Object.keys(this.props.user))
     if (Object.keys(this.props.user).length === 0) {
-      console.log(Object.keys(this.props.user).length)
       return <Redirect to="/login" />
     } 
     return (
