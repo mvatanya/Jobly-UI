@@ -11,6 +11,12 @@ class JobCard extends Component {
 
   }
 
+  componentDidMount() {
+    if (this.props.state === "applied"){
+      this.setState({buttonText: "APPLIED"})
+    }
+  }
+
   async appliedJobClick(){
     try{
       let id = this.props.id
@@ -27,13 +33,15 @@ class JobCard extends Component {
   }
 
   render () {
+    let buttonColor = this.state.buttonText === "APPLIED" ?  "danger" : "primary"
+
     return (
       <Card bg="white" style={{ width: '50%' }}>
         <Card.Body>
           <Card.Title>{this.props.title}</Card.Title>
           <Card.Text>Salary: {this.props.salary}</Card.Text>
           <Card.Text>Equity: {this.props.equity}</Card.Text>
-          <Button onClick={this.appliedJobClick} variant="primary">{this.state.buttonText}</Button>
+          <Button onClick={this.appliedJobClick} variant={buttonColor}>{this.state.buttonText}</Button>
 
         </Card.Body>
       </Card>

@@ -10,9 +10,10 @@ import JoblyApi from './JoblyApi'
 class App extends Component {
   constructor(props) {
     super(props)
-    this.state = { 
-      user:{},
-      loading: true
+    this.state = {
+      user: {},
+      loading: true,
+      isLoggedin: false
     }
 
     this.checkToken = this.checkToken.bind(this)
@@ -23,18 +24,19 @@ class App extends Component {
     this.setState({
       loading: false
     })
-  
   }
 
-  async checkToken(){
-    try{
+  async checkToken() {
+    try {
       let username = jwt.decode(localStorage.getItem("token")).username;
       let user = await JoblyApi.authenticate(username)
-      if(user){
-        this.setState({user})
+      if (user) {
+        this.setState({ user, isLoggedin: true })
+      } else {
+        this.setState({isLoggedin: false})
       }
     }
-    catch(err){
+    catch (err) {
       // throw new Error("Something went wrong...")
       return "error"
 
@@ -42,15 +44,15 @@ class App extends Component {
   }
 
   render() {
-    
-    if(this.state.loading){
+
+    if (this.state.loading) {
       return <div>Loading....</div>
     }
     return (
       <div>
         <BrowserRouter>
-          <NavBar user={this.state.user} />
-          <Routes user={this.state.user} checkToken={this.checkToken}/>
+          <NavBar user={this.state.user} isLoggedin={this.state.isLoggedin} />
+          <Routes user={this.state.user} checkToken={this.checkToken} />
         </BrowserRouter>
 
 

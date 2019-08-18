@@ -5,6 +5,7 @@ class Logout extends Component{
 
   clearLocalStorage(){
     localStorage.removeItem('token')
+    this.props.checkToken()
   }
   
   render(){

@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import JoblyApi from "./JoblyApi"
 import JobCard from './JobCard'
+import { Redirect } from 'react-router-dom'
 class CompanyDetails extends Component {
   
   constructor(props) {
@@ -13,13 +14,20 @@ class CompanyDetails extends Component {
     let requestCompanyHandle = this.props.match.params.handle.toLowerCase()
     // console.log(requestCompanyHandle)
     let companyResponse = await JoblyApi.getCompany(requestCompanyHandle)
-    this.setState({ jobs: companyResponse.jobs, company: {name: companyResponse.name, description:companyResponse.description} })
+    let jobsIDInCompany = companyResponse.jobs.map(ele => ele.id)
+    let searchJobsAll = await JoblyApi.getJobs()
+    let searchJob = searchJobsAll.filter(ele => jobsIDInCompany.includes(ele.id))
+    this.setState({ jobs: searchJob, company: {name: companyResponse.name, description:companyResponse.description} })
   }
   render(){
     console.log("HERE", this.state.jobs)
+
+    if (Object.keys(this.props.user).length === 0) {
+      return <Redirect to="/login" />
+    } 
     let jobs = this.state.jobs.map(job=>
                 <div key={job.id}>
-                  <JobCard key={job.id} {...job}/>
+                  <JobCard key={job.id} {...job} username={this.props.user.username}/>
                 </div>)
     return (
       <div>
