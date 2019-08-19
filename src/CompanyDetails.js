@@ -12,7 +12,6 @@ class CompanyDetails extends Component {
   
   async componentDidMount() {
     let requestCompanyHandle = this.props.match.params.handle.toLowerCase()
-    // console.log(requestCompanyHandle)
     let companyResponse = await JoblyApi.getCompany(requestCompanyHandle)
     let jobsIDInCompany = companyResponse.jobs.map(ele => ele.id)
     let searchJobsAll = await JoblyApi.getJobs()

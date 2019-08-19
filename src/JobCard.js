@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Card, Button } from 'react-bootstrap';
 import JoblyApi from './JoblyApi';
-
+import "./JobCard.css"
 class JobCard extends Component {
   constructor(props) {
     super(props);
@@ -36,13 +36,12 @@ class JobCard extends Component {
     let buttonColor = this.state.buttonText === "APPLIED" ?  "danger" : "primary"
 
     return (
-      <Card bg="white" style={{ width: '50%' }}>
+      <Card className="p-1 mt-1 mb-2 ml-auto mr-auto" bg="white" style={{ width: '65%' }}>
         <Card.Body>
           <Card.Title>{this.props.title}</Card.Title>
-          <Card.Text>Salary: {this.props.salary}</Card.Text>
-          <Card.Text>Equity: {this.props.equity}</Card.Text>
-          <Button onClick={this.appliedJobClick} variant={buttonColor}>{this.state.buttonText}</Button>
-
+          <Card.Text className="mb-0">Salary: {this.props.salary}</Card.Text>
+          <Card.Text className="mb-0">Equity: {this.props.equity}</Card.Text>
+          <Button className="Button" onClick={this.appliedJobClick} variant={buttonColor}>{this.state.buttonText}</Button>
         </Card.Body>
       </Card>
     )

@@ -1,4 +1,5 @@
 import React, { Component } from "react"
+import { Button } from 'react-bootstrap';
 
   class SearchBoxForm extends Component {
     constructor(props){
@@ -22,16 +23,18 @@ import React, { Component } from "react"
     render(){
       
       return(
-        <div>
-          <form onSubmit={this.inputSearch} >
+        <div >
+          <form onSubmit={this.inputSearch} className="form-inline" >
           <input
+            className="mt-4 mb-4 ml-auto"
+            style={{ width: '60%', height:"45px" }}
             name="input"
             type="text"
             onChange={this.handleChange}
             placeholder="Enter Search Term"
             value={this.state.input}
           />
-          <button>Submit</button>
+          <Button variant="primary" className="mr-auto" style={{ height:"45px" }}>Submit</Button>
           </form>
         </div>
       )
