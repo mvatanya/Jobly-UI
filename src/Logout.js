@@ -3,9 +3,15 @@ import { Redirect} from 'react-router-dom'
 
 class Logout extends Component{
 
-  clearLocalStorage(){
+  // componentDidMount(){
+  //   this.clearLocalStorage()
+  // }
+
+  async clearLocalStorage(){
+    // debugger;
     localStorage.removeItem('token')
-    this.props.checkToken()
+    // debugger
+    await this.props.checkToken()
   }
   
   render(){

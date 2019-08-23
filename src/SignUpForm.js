@@ -1,4 +1,6 @@
 import React, { Component } from "react"
+import { Button } from 'react-bootstrap';
+import "./SignUpForm.css"
 
 class SignUpForm extends Component {
   constructor(props) {
@@ -28,10 +30,11 @@ class SignUpForm extends Component {
   render() {
 
     return (
-      <div>
+      <div className="ml-2 mt-3">
         <form onSubmit={this.inputSignup}>
           <label htmlFor="id">Username</label>
           <input
+            className="signUpInput"
             id="username"
             name="username"
             type="text"
@@ -42,6 +45,7 @@ class SignUpForm extends Component {
           <br />
           <label htmlFor="password">Password</label>
           <input
+            className="signUpInput"
             id="password"
             name="password"
             type="text"
@@ -52,6 +56,7 @@ class SignUpForm extends Component {
           <br />
           <label htmlFor="firstName">First Name</label>
           <input
+            className="signUpInput"
             id="firstName"
             name="firstName"
             type="text"
@@ -62,6 +67,7 @@ class SignUpForm extends Component {
           <br />
           <label htmlFor="lastName">Last Name</label>
           <input
+            className="signUpInput"
             id="lastName"
             name="lastName"
             type="text"
@@ -72,6 +78,7 @@ class SignUpForm extends Component {
           <br />
           <label htmlFor="email">Email</label>
           <input
+            className="signUpInput"
             id="email"
             name="email"
             type="text"
@@ -80,7 +87,7 @@ class SignUpForm extends Component {
           />
 
           <br />
-          <button>Submit</button>
+          <Button className="mt-3" type="submit">Submit</Button>
         </form>
       </div>
     )

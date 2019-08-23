@@ -2,6 +2,7 @@ import React, { Component } from "react"
 import LoginForm from "./LoginForm"
 import SignUpForm from "./SignUpForm"
 import JoblyApi from "./JoblyApi"
+import { Button } from 'react-bootstrap';
 
 
 class LoginSignUpForm extends Component {
@@ -34,9 +35,9 @@ class LoginSignUpForm extends Component {
   
   render(){
     return(
-    <div>
-    <button name="login"onClick={this.loginOrSignup}>LogIn</button> <button  name="signup" onClick={this.loginOrSignup}>SignUp</button>
-    {this.state.isLogin ? <LoginForm history={this.props.history} checkToken={this.props.checkToken} userInput={this.userInput}/> : <SignUpForm history={this.props.history} checkToken={this.props.checkToken} userSignUp={this.userSignUp}/>}
+    <div className="container col-md-6 offset-md-3 col-lg-4 offset-lg-4 mt-5">
+      <Button name="login" className="mb-3" onClick={this.loginOrSignup}>Log In</Button> <Button  name="signup" className="mb-3" onClick={this.loginOrSignup}>SignUp</Button>
+      {this.state.isLogin ? <LoginForm history={this.props.history} checkToken={this.props.checkToken} userInput={this.userInput}/> : <SignUpForm history={this.props.history} checkToken={this.props.checkToken} userSignUp={this.userSignUp}/>}
     </div>
     ) 
   }
@@ -44,3 +45,4 @@ class LoginSignUpForm extends Component {
 } 
 
 export default LoginSignUpForm
+

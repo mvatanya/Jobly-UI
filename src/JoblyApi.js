@@ -52,7 +52,6 @@ class JoblyApi {
   // }
 
   static async login(username, password) {
-    debugger
     let res = await this.request(`login/`, { username: username, password: password }, "post")
     let token = res.token;
     localStorage.setItem("token", token)

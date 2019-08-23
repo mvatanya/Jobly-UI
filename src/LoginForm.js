@@ -1,10 +1,11 @@
 import React, { Component } from "react"
+import { Button, Form, Card } from 'react-bootstrap';
+import './LoginForm.css'
 
 class Login extends Component {
   constructor(props) {
     super(props);
     this.state = { username: "", password: "" }
-
   }
 
   handleChange = evt => {
@@ -16,40 +17,42 @@ class Login extends Component {
   inputLogin = async evt => {
     evt.preventDefault();
     await this.props.userInput(this.state.username, this.state.password)
-    this.props.checkToken()
+    await this.props.checkToken()
     this.props.history.push("/jobs")
-
   }
-  
+
 
   render() {
 
     return (
-      <div>
-        <form onSubmit={this.inputLogin} >
-          <label htmlFor="id">Username</label>
-          <input
-            id="username"
-            name="username"
-            type="text"
-            onChange={this.handleChange}
-            value={this.state.username}
-          />
-
-          <br />
-          <label htmlFor="password">Password</label>
-          <input
-            id="username"
-            name="password"
-            type="text"
-            onChange={this.handleChange}
-            value={this.state.password}
-          />
-
-          <br />
-          <button>Submit</button>
-        </form>
+      <div >
+        <Form onSubmit={this.inputLogin} >
+          <Form.Group>
+            <label htmlFor="id" >Username</label>
+            <input
+              className="logInInput"
+              id="username"
+              name="username"
+              type="text"
+              onChange={this.handleChange}
+              value={this.state.username}
+            />
+          </Form.Group>
+          <Form.Group>
+            <label htmlFor="password" >Password</label>
+            <input
+              className="logInInput"
+              id="username"
+              name="password"
+              type="text"
+              onChange={this.handleChange}
+              value={this.state.password}
+            />
+          </Form.Group>
+          <Button className="login-submit" type="submit" >Submit</Button>
+        </Form>
       </div>
+      
     )
   }
 }

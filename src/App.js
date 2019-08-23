@@ -1,8 +1,8 @@
-import React, { Component } from "react";
-import { BrowserRouter } from "react-router-dom";
+import React, { Component } from 'react';
+import { BrowserRouter } from 'react-router-dom';
 
-import Routes from "./Routes";
-import NavBar from "./NavBar";
+import Routes from './Routes';
+import NavBar from './NavBar';
 
 import jwt from 'jsonwebtoken';
 import JoblyApi from './JoblyApi'
@@ -28,23 +28,23 @@ class App extends Component {
 
   async checkToken() {
     try {
-      let username = jwt.decode(localStorage.getItem("token")).username;
+      let username = jwt.decode(localStorage.getItem("token")) && jwt.decode(localStorage.getItem("token")).username;
       let user = await JoblyApi.authenticate(username)
       if (user) {
         this.setState({ user, isLoggedin: true })
       } else {
         this.setState({isLoggedin: false})
       }
-    }
-    catch (err) {
+    } catch (err) {
       // throw new Error("Something went wrong...")
-      return "error"
+      this.setState({ user: {}, isLoggedin: false });
+      return `error: ${err}`; //this return isn't actually used anywhere
 
     }
   }
 
   render() {
-
+console.log('App render')
     if (this.state.loading) {
       return <div>Loading....</div>
     }

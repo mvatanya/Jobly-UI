@@ -34,7 +34,7 @@ import { Button } from 'react-bootstrap';
             placeholder="Enter Search Term"
             value={this.state.input}
           />
-          <Button variant="primary" className="mr-auto" style={{ height:"45px" }}>Submit</Button>
+          <Button type="submit" variant="primary" className="mr-auto" style={{ height:"45px" }}>Submit</Button>
           </form>
         </div>
       )
