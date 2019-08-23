@@ -8,7 +8,6 @@ class Logout extends Component{
   // }
 
   async clearLocalStorage(){
-    // debugger;
     localStorage.removeItem('token')
     // debugger
     await this.props.checkToken()

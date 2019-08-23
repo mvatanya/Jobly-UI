@@ -1,5 +1,5 @@
 import React, { Component } from "react"
-import { Button } from 'react-bootstrap';
+import { Button, Form } from 'react-bootstrap';
 import "./SignUpForm.css"
 
 class SignUpForm extends Component {
@@ -23,7 +23,7 @@ class SignUpForm extends Component {
   inputSignup = async evt => {
     evt.preventDefault();
     await this.props.userSignUp(this.state.username, this.state.password, this.state.firstName, this.state.lastName, this.state.email)
-    this.props.checkToken()
+    await this.props.checkToken()
     this.props.history.push("/jobs")
   }
 
@@ -31,64 +31,69 @@ class SignUpForm extends Component {
 
     return (
       <div className="ml-2 mt-3">
-        <form onSubmit={this.inputSignup}>
-          <label htmlFor="id">Username</label>
-          <input
-            className="signUpInput"
-            id="username"
-            name="username"
-            type="text"
-            onChange={this.handleChange}
-            value={this.state.username}
-          />
+        <Form onSubmit={this.inputSignup}>
+          <Form.Group>
+            <label htmlFor="id">Username</label>
+            <input
+              className="signUpInput"
+              id="username"
+              name="username"
+              type="text"
+              onChange={this.handleChange}
+              value={this.state.username}
+            />
+          </Form.Group>
+          <Form.Group>
+            <label htmlFor="password">Password</label>
+            <input
+              className="signUpInput"
+              id="password"
+              name="password"
+              type="text"
+              onChange={this.handleChange}
+              value={this.state.password}
+            />
 
-          <br />
-          <label htmlFor="password">Password</label>
-          <input
-            className="signUpInput"
-            id="password"
-            name="password"
-            type="text"
-            onChange={this.handleChange}
-            value={this.state.password}
-          />
+          </Form.Group>
 
-          <br />
-          <label htmlFor="firstName">First Name</label>
-          <input
-            className="signUpInput"
-            id="firstName"
-            name="firstName"
-            type="text"
-            onChange={this.handleChange}
-            value={this.state.firstName}
-          />
+          <Form.Group>
+            <label htmlFor="firstName">First Name</label>
+            <input
+              className="signUpInput"
+              id="firstName"
+              name="firstName"
+              type="text"
+              onChange={this.handleChange}
+              value={this.state.firstName}
+            />
 
-          <br />
-          <label htmlFor="lastName">Last Name</label>
-          <input
-            className="signUpInput"
-            id="lastName"
-            name="lastName"
-            type="text"
-            onChange={this.handleChange}
-            value={this.state.lastName}
-          />
+          </Form.Group>
+          <Form.Group>
+            <label htmlFor="lastName">Last Name</label>
+            <input
+              className="signUpInput"
+              id="lastName"
+              name="lastName"
+              type="text"
+              onChange={this.handleChange}
+              value={this.state.lastName}
+            />
 
-          <br />
-          <label htmlFor="email">Email</label>
-          <input
-            className="signUpInput"
-            id="email"
-            name="email"
-            type="text"
-            onChange={this.handleChange}
-            value={this.state.email}
-          />
+          </Form.Group>
+          <Form.Group>
+            <label htmlFor="email">Email</label>
+            <input
+              className="signUpInput"
+              id="email"
+              name="email"
+              type="text"
+              onChange={this.handleChange}
+              value={this.state.email}
+            />
 
-          <br />
+          </Form.Group>
           <Button className="mt-3" type="submit">Submit</Button>
-        </form>
+        </Form>
       </div>
     )
   }
