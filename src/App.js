@@ -29,8 +29,8 @@ class App extends Component {
   async checkToken() {
     try {
       let username = jwt.decode(localStorage.getItem("token")) && jwt.decode(localStorage.getItem("token")).username;
-      let user = await JoblyApi.authenticate(username)
-      if (user) {
+      if (username) {
+        let user = await JoblyApi.authenticate(username)
         this.setState({ user, isLoggedin: true })
       } else {
         this.setState({isLoggedin: false})
@@ -44,7 +44,6 @@ class App extends Component {
   }
 
   render() {
-console.log('App render')
     if (this.state.loading) {
       return <div>Loading....</div>
     }

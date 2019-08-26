@@ -19,7 +19,6 @@ class CompanyDetails extends Component {
     this.setState({ jobs: searchJob, company: {name: companyResponse.name, description:companyResponse.description} })
   }
   render(){
-    console.log("HERE", this.state.jobs)
 
     if (Object.keys(this.props.user).length === 0) {
       return <Redirect to="/login" />

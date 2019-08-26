@@ -12,7 +12,6 @@ class Job extends Component {
   }
 
   async componentDidMount() {
-    console.log(this.props.user)
     // if (Object.keys(this.props.user).length === 0) return
     let jobsResponse = await JoblyApi.getJobs()
     this.setState({ jobs: jobsResponse, loading: false })
@@ -28,7 +27,6 @@ class Job extends Component {
 
 
   render() {
-    console.log('Job component')
     let jobs = this.state.jobs
     if (Object.keys(this.props.user).length === 0) {
       return <Redirect to="/login" />

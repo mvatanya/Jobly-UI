@@ -1,5 +1,5 @@
 import React, { Component } from "react"
-import { Button, Form, Card } from 'react-bootstrap';
+import { Button, Form} from 'react-bootstrap';
 import './LoginForm.css'
 
 class Login extends Component {
@@ -44,7 +44,7 @@ class Login extends Component {
               className="logInInput"
               id="username"
               name="password"
-              type="text"
+              type="password"
               onChange={this.handleChange}
               value={this.state.password}
             />

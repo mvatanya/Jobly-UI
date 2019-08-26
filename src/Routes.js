@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Switch, Route, Redirect, NavLink } from 'react-router-dom';
+import { Switch, Route, Redirect } from 'react-router-dom';
 import Homepage from './Homepage'
 import Company from './Company'
 import Job from './Job'
@@ -14,7 +14,6 @@ class Routes extends Component {
 
   
   render(){
-console.log('this.props.user', this.props.user)
     return (
     <Switch>
       <Route exact path="/" render={() => <Homepage user={this.props.user}/>} />

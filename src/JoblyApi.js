@@ -1,5 +1,4 @@
 import axios from 'axios'
-import jwt from 'jsonwebtoken';
 
 class JoblyApi {
 
@@ -7,11 +6,17 @@ class JoblyApi {
     let token = localStorage.getItem("token")
     paramsOrData._token =  token
 
+    let url = `http://localhost:3001/${endpoint}`;
+
+    // when running npm build,it knows that the node_env will be production
+    if (process.env.NODE_ENV === 'production') {
+      url = `https://jobly-api.herokuapp.com/${endpoint}`;
+    }
+
     try {
       return (await axios({
         method: verb,
-        // url: `http://localhost:3001/${endpoint}`,
-        url: `https://jobly-api.herokuapp.com/${endpoint}`,
+        url,
         [verb === "get" ? "params" : "data"]: paramsOrData
       })).data;
       // axios sends query string data via the "params" key,
@@ -35,20 +40,16 @@ class JoblyApi {
 
   static async getCompany(handle) {
     let res = await this.request(`companies/${handle}`);
-    console.log("res of companies", res.company)
     return res.company;
   }
 
   static async getJobs(data) {
     let res = await this.request(`jobs/`, { search: data });
-    console.log("res of jobs:", res.jobs)
     return res.jobs;
   }
 
   // static async getUserJobs(username) {
   //   let res = await this.request(`users/${username}`, { username: username });
-  //   console.log(username)
-  //   console.log("RES",res)
   //   return res.jobs;
   // }
 

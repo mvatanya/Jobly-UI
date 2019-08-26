@@ -29,7 +29,7 @@ class Company extends Component {
 
   render() {
     let companies = this.state.companies
-    console.log('Object.keys(this.props.user....', Object.keys(this.props.user))
+    // console.log('Object.keys(this.props.user....', Object.keys(this.props.user))
     if (Object.keys(this.props.user).length === 0) {
       return <Redirect to="/login" />
     } 
