@@ -7,7 +7,8 @@ Backend code is provided by Rithm School.
 ### Key learnings;
 
   * Design component hierarchies is very important skills in learning React
-  * Creating API helpers for centralizing AJAX calls 
+  * Creating API helper for centralizing AJAX calls 
+  * React Component Lifecycle
   * Authentication with JWTs which stored in local storage
   * Hydration - to not loose data when refreshing a page
   * Using parameterized queries to protect against SQL injection
