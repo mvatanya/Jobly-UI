@@ -18,7 +18,6 @@ class App extends Component {
 
     this.checkToken = this.checkToken.bind(this)
   }
-
   async componentDidMount() {
     await this.checkToken()
     this.setState({
