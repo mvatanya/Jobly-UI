@@ -58,20 +58,17 @@ Backend code is provided by Rithm School.
   ```
 
 ### Getting Started
-1. Clone this repo
-2. cd into the "backend" directory, install required packages, create and seed database, and start the server. (Make sure that you have postgreSQL installed)
+1. This repo has backend part on another repo called Jobly-API-New. Clone the Jobly-API-NEW repo, install required packages, create and seed database, and start the server. (Make sure that you have postgreSQL installed)
 ```
-  cd backend
   npm install
   createdb jobly
   psql jobly < data.sql
   nodemon server.js 
 
 ```
-3. cd into the "frontend" directory, install required packages, then start the app
+2. clone frontend repo from this directory, install required packages, then start the app
 
 ```
-  cd frontend
   npm install
   npm start
 ```
